@@ -42,48 +42,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (let i=0; i < events.length; i++){ %>
-                                <tr>
-                                    <th scope="row">
-                                        <%= events[i].eventId %>
-                                    </th>
-                                    <td>
-                                        <%= events[i].name %>
-                                    </td>
-                                    <td>
-                                        <%= events[i].date.toLocaleString() %>
-                                    </td>
-                                    <td>
-                                        <%= events[i].end() %>
-                                    </td>
-                                    <td>
-                                        <%= `${Math.round(events[i].duration / 6) / 10} Hour(s)` %>
-                                    </td>
-                                    <td>
-                                        <%= events[i].isActive %>
-                                    </td>
-                                    <td>
-                                        <%= events[i].capacity %>
-                                    </td>
-                                    <td>
-                                        <%= events[i].availability %>
-                                    </td>
-                                    <% let categories="" %>
-                                    <% for (let j = 0; j < events[i].categoryList.length; j++) { %>
-                                        <% if (j == events[i].categoryList.length - 1) { %>
-                                            <% categories += `${events[i].categoryList[j].categoryId}` %>
-                                        <% } else { %>
-                                            <% categories += `${events[i].categoryList[j].categoryId}, ` %>
-                                        <% } %>
-                                    <% } %>
-                                    <td>
-                                        <%= categories %>
-                                    </td>
-                                    <td>
-                                        <a href="<%= `/event/32528558/view-details/${events[i].eventId}` %>"><button class="btn btn-primary">View</button></a>
-                                    </td>
-                                </tr>
-                            <% } %>
                         </tbody>
                     </table>
                 </div>

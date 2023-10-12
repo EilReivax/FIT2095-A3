@@ -39,29 +39,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for (let i = 0; i < records.length; i++) { %>
-                                <tr>
-                                    <th scope="row">
-                                        <%= records[i].categoryId %>
-                                    </th>
-                                    <td>
-                                        <%= records[i].name %>
-                                    </td>
-                                    <td>
-                                        <%= records[i].description %>
-                                    </td>
-                                    <td>
-                                        <%= records[i].image %>
-                                    </td>
-                                    <td><img src="<%= records[i].displayImage %>"></td>
-                                    <td>
-                                        <%= records[i].date.toLocaleDateString() %>
-                                    </td>
-                                    <td>
-                                        <a href= "<%=`/category/michael/view-details/${records[i].categoryId}` %>"><button class="btn btn-primary">View</button></a>
-                                    </td>
-                                </tr>
-                            <% } %>
                         </tbody>
                     </table>
                 </div>

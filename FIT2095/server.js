@@ -2,11 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require("path");
 
-const CategoryApi = require('./routers/category-api');
-const Category = require('./routers/category');
-const EventApi = require('./routers/event-api');
-const Event = require('./routers/event');
-const Stats = require('./controllers/stats');
+const CategoryApi = require('./backend/routers/category-api');
+const Category = require('./backend/routers/category');
+const EventApi = require('./backend/routers/event-api');
+const Event = require('./backend/routers/event');
+const Stats = require('./backend/controllers/stats');
 
 const PORT_NUMBER = 8080;
 
@@ -18,7 +18,7 @@ app.listen(PORT_NUMBER, function() {
 
 app.use(express.static("node_modules/bootstrap/dist/css"));
 app.use(express.static(path.join(__dirname, "./backend/images")));
-app.use(express.static(path.join(__dirname, "./dist/test")));
+app.use(express.static(path.join(__dirname, "./dist/fit2095")));
 
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
@@ -32,44 +32,44 @@ async function connect() {
 connect().catch(err => console.log(err));
 
 // Home page
-app.get('/', Stats.getAll);
+// app.get('/', Stats.getAll);
 
-// Category HTML endpoints
-app.get('/category/32528558/add', function (req, res) {
-    res.render("add-category");
-})
-app.post('/add-category-post', Category.createOne);
-app.get('/category/32528558/delete', function (req, res) {
-    res.render('delete-category');
-})
-app.post('/delete-event-category', Category.deleteOne);
-app.get('/category/32528558/view-all', Category.getAll);
-app.get('/event/32528558/view-details/:eventId', Event.getOne);
-app.get('/category/32528558/search-category', Category.search);
+// // Category HTML endpoints
+// app.get('/category/32528558/add', function (req, res) {
+//     res.render("add-category");
+// })
+// app.post('/add-category-post', Category.createOne);
+// app.get('/category/32528558/delete', function (req, res) {
+//     res.render('delete-category');
+// })
+// app.post('/delete-event-category', Category.deleteOne);
+// app.get('/category/32528558/view-all', Category.getAll);
+// app.get('/event/32528558/view-details/:eventId', Event.getOne);
+// app.get('/category/32528558/search-category', Category.search);
 
-// Category API endpoints
-app.post('/api/v1/category/32528558/add', CategoryApi.createOne);
-app.get('/api/v1/category/32528558/view-all', CategoryApi.getAll);
-app.put('/api/v1/category/32528558/edit', CategoryApi.updateOne);
-app.delete('/api/v1/category/32528558/delete', CategoryApi.deleteOne);
+// // Category API endpoints
+// app.post('/api/v1/category/32528558/add', CategoryApi.createOne);
+// app.get('/api/v1/category/32528558/view-all', CategoryApi.getAll);
+// app.put('/api/v1/category/32528558/edit', CategoryApi.updateOne);
+// app.delete('/api/v1/category/32528558/delete', CategoryApi.deleteOne);
 
-// Event HTML endpoints
-app.get('/event/michael/add', function (req, res) {
-    res.render('add-event');
-});
-app.post('/event/michael/add', Event.createOne);
-app.get('/event/michael/view-all', Event.getAll);
-app.get('/event/michael/view-soldout', Event.getSoldout);
-app.get('/category/michael/view-details/:categoryId', Category.getOne);
-app.get('/event/michael/delete', Event.deleteOne);
+// // Event HTML endpoints
+// app.get('/event/michael/add', function (req, res) {
+//     res.render('add-event');
+// });
+// app.post('/event/michael/add', Event.createOne);
+// app.get('/event/michael/view-all', Event.getAll);
+// app.get('/event/michael/view-soldout', Event.getSoldout);
+// app.get('/category/michael/view-details/:categoryId', Category.getOne);
+// app.get('/event/michael/delete', Event.deleteOne);
 
-// Event API endpoints
-app.post('/api/v1/event/michael/add', EventApi.createOne);
-app.get('/api/v1/event/michael/view-all', EventApi.getAll);
-app.put('/api/v1/event/michael/edit', EventApi.updateOne);
-app.delete('/api/v1/event/michael/delete', EventApi.deleteOne);
+// // Event API endpoints
+// app.post('/api/v1/event/michael/add', EventApi.createOne);
+// app.get('/api/v1/event/michael/view-all', EventApi.getAll);
+// app.put('/api/v1/event/michael/edit', EventApi.updateOne);
+// app.delete('/api/v1/event/michael/delete', EventApi.deleteOne);
 
-// 404 page
-app.get("*", function (req, res) {
-    res.render("404");
-});
+// // 404 page
+// app.get("*", function (req, res) {
+//     res.render("404");
+// });
