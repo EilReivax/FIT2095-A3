@@ -39,6 +39,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr *ngFor="let item of records">
+                                <th scope="row">
+                                    {{item.categoryId}}
+                                </th>
+                                <td>
+                                    {{item.name}}
+                                </td>
+                                <td>
+                                    {{item.description}}
+                                </td>
+                                <td>
+                                    {{item.image}}
+                                </td>
+                                <td></td>
+                                <td>
+                                    {{item.date.toLocaleDateString()}}
+                                </td>
+                                <td>
+                                    <a><button class="btn btn-primary">View</button></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
