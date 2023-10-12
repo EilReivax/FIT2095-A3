@@ -13,6 +13,9 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
 import { UpdateEventComponent } from './update-event/update-event.component';
 import { ViewCategoryComponent } from './view-category/view-category.component';
 import { ViewEventComponent } from './view-event/view-event.component';
+import { DatabaseService } from './database.service';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,11 @@ import { ViewEventComponent } from './view-event/view-event.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
