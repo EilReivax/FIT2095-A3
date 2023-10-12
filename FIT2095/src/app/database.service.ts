@@ -11,4 +11,12 @@ const httpOptions = {
 export class DatabaseService {
 
   constructor(private http: HttpClient) { }
+
+  listCategory(){
+    return this.http.get("/api/v1/category/32528558/view-all");
+  }
+
+  listEvent(){
+    return this.http.get("/api/v1/event/michael/view-all");
+  }
 }
