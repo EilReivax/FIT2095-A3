@@ -3,10 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddEventComponent } from './add-event/add-event.component';
+import { DeleteCategoryComponent } from './delete-category/delete-category.component';
+import { DeleteEventComponent } from './delete-event/delete-event.component';
+import { ListCategoryComponent } from './list-category/list-category.component';
+import { ListEventComponent } from './list-event/list-event.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { UpdateEventComponent } from './update-event/update-event.component';
+import { ViewCategoryComponent } from './view-category/view-category.component';
+import { ViewEventComponent } from './view-event/view-event.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddCategoryComponent,
+    AddEventComponent,
+    DeleteCategoryComponent,
+    DeleteEventComponent,
+    ListCategoryComponent,
+    ListEventComponent,
+    UpdateCategoryComponent,
+    UpdateEventComponent,
+    ViewCategoryComponent,
+    ViewEventComponent
   ],
   imports: [
     BrowserModule,
