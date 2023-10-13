@@ -12,19 +12,19 @@
     <div>
         <h3>Category ID</h3>
             <p>
-                <%= category.categoryId %>
+                {{category.categoryId}}
             </p>
             <h3>Name</h3>
             <p>
-                <%= category.name %>
+                {{category.name}}
             </p>
             <h3>Description</h3>
             <p>
-                <%= category.description %>
+                {{category.description}}
             </p>
             <h3>Created Date Time</h3>
             <p>
-                <%= category.createdAt %>
+                {{category.createdAt}}
             </p>
     </div>
     <div class="album py-5">
@@ -43,11 +43,40 @@
                                     <th scope="col">Is Active</th>
                                     <th scope="col">Capacity</th>
                                     <th scope="col">Tickets Available</th>
-                                    <th scope="col">Categoies ID</th>
+                                    <th scope="col">Categories ID</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr *ngFor="let event of events">
+                                    <th scope="row">
+                                        {{event.eventId}}
+                                    </th>
+                                    <td>
+                                        {{event.name}}
+                                    </td>
+                                    <td>
+                                        {{getEndDate(event.date, event.duration) | date:'medium'}}
+                                    </td>
+                                    <td>
+                                        {{getHours(event.duration)}}
+                                    </td>
+                                    <td>
+                                        {{event.isActive}}
+                                    </td>
+                                    <td>
+                                        {{event.capacity}}
+                                    </td>
+                                    <td>
+                                        {{event.availability}}
+                                    </td>
+                                    <td>
+                                        {{getCategories(event.categoryList)}}
+                                    </td>
+                                    <td>
+                                        <a><button class="btn btn-primary">View</button></a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
