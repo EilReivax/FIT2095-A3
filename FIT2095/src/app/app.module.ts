@@ -28,6 +28,11 @@ const appRoutes: Routes = [
   { path: "list-category", component: ListCategoryComponent },
   { path: "list-event", component: ListEventComponent },
   { path: "delete-category", component: DeleteCategoryComponent },
+  { path : "delete-event", component: DeleteEventComponent},
+  { path: "update-category", component: UpdateCategoryComponent},
+  { path: "update-event", component: UpdateEventComponent},
+  { path: "view-category", component: ViewCategoryComponent},
+  { path: "view-event", component: ViewEventComponent},
   { path: "", redirectTo: "/stats", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent },
 
