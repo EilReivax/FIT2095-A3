@@ -30,12 +30,22 @@ const appRoutes: Routes = [
   { path : "delete-event", component: DeleteEventComponent},
   { path: "update-category", component: UpdateCategoryComponent},
   { path: "update-event", component: UpdateEventComponent},
+<<<<<<< FIT2095/src/app/app.module.ts
+  { path: "view-category/:id", component: ViewCategoryComponent},
+  { path: "view-event/:id", component: ViewEventComponent},
+  { path: "stats1", component: StatsComponent },
+  { path: "stats2", component: StatsRecordsComponent },
+  { path: "", redirectTo: "/stats", pathMatch: "full" },
+  { path: "**", component: PageNotFoundComponent },
+
+=======
   { path: "view-category", component: ViewCategoryComponent},
   { path: "view-event", component: ViewEventComponent},
   { path: "stats1", component: StatsComponent },
   { path: "stats2", component: StatsRecordsComponent },
   { path: "", redirectTo: "/stats1", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
+>>>>>>> FIT2095/src/app/app.module.ts
 ];
 
 @NgModule({

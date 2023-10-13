@@ -40,3 +40,4 @@ app.post('/api/v1/event/michael/add', EventApi.createOne);
 app.get('/api/v1/event/michael/view-all', EventApi.getAll);
 app.put('/api/v1/event/michael/edit', EventApi.updateOne);
 app.delete('/api/v1/event/michael/delete', EventApi.deleteOne);
+app.get('/api/v1/event/michael/view/:eventId', EventApi.getOne);

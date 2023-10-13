@@ -57,7 +57,7 @@
                                     {{item.date | date: 'medium'}}
                                 </td>
                                 <td>
-                                    <a><button class="btn btn-primary">View</button></a>
+                                    <a [routerLink]="['/view-category', item.categoryId]"><button class="btn btn-primary">View</button></a>
                                 </td>
                             </tr>
                         </tbody>

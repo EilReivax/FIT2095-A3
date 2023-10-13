@@ -50,7 +50,8 @@ export class DatabaseService {
   }
 
   viewEvent(id: any){
-    return this.http.get("/api/v1/event/michael/view", {headers: httpOptions.headers});
+    let url = '/api/v1/event/michael/view/' + id
+    return this.http.get(url, {headers: httpOptions.headers});
   }
 
   viewStats() {

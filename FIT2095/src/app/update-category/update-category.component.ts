@@ -16,7 +16,7 @@ export class UpdateCategoryComponent {
 
   updateCategory(){
     let categoryObj = {
-      id: this.id,
+      categoryId: this.id,
       name: this.name,
       description: this.description,
     };
