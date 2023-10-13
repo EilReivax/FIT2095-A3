@@ -34,6 +34,7 @@ const appRoutes: Routes = [
   { path: "view-event/:id", component: ViewEventComponent},
   { path: "stats1", component: StatsComponent },
   { path: "stats2", component: StatsRecordsComponent },
+  { path: "400" , component: InvalidDataComponent},
   { path: "", redirectTo: "/stats", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent },
 ];
