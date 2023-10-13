@@ -21,7 +21,7 @@ export class AddEventComponent {
   constructor(public dbService: DatabaseService, private router:Router) { }
 
   saveEvent(){
-    let categoryObj = {
+    let eventObj = {
       name: this.name,
       description: this.description,
       image: this.image,
@@ -33,9 +33,11 @@ export class AddEventComponent {
       categoriesId: this.categoriesId
     }
 
-    this.dbService.createEvent(categoryObj).subscribe({
+    this.dbService.createEvent(eventObj).subscribe({
       next:(result) => {this.router.navigate(['/list-event']);},
-      error: (error) => {console.log(error);}
+      error: (error) => {
+        console.log(error);
+      }
     })
   }
 

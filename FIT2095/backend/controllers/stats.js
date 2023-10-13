@@ -18,7 +18,7 @@ module.exports = {
         let updateCount = operation.updateCount;
         let deleteCount = operation.deleteCount;
 
-        res.render("index", {
+        res.json({
             categoryCount: categoryCount, 
             eventCount: eventCount,
             createCount: createCount,

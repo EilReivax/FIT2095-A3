@@ -53,4 +53,8 @@ export class DatabaseService {
     let url = '/api/v1/event/michael/view/' + id
     return this.http.get(url, {headers: httpOptions.headers});
   }
+
+  viewStats() {
+    return this.http.get("/api/v1/stats");
+  }
 }
