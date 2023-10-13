@@ -18,7 +18,9 @@ export class ListCategoryComponent {
       next: (data: any) => {
         this.records = data
       },
-      error: (err) =>  { }
+      error: (err) =>  {
+        console.log(err)
+      }
     })
   }
 }

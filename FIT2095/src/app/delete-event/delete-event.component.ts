@@ -28,7 +28,9 @@ export class DeleteEventComponent {
         this.records = data
         this.getEvent();
       },
-      error: (err) =>  { }
+      error: (err) =>  {
+        console.log(err)
+      }
     })
   }
 

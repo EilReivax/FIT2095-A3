@@ -28,7 +28,9 @@ export class DeleteCategoryComponent {
         this.records = data
         this.getCategory();
       },
-      error: (err) =>  { }
+      error: (err) =>  {
+        console.log(err)
+      }
     })
   }
 }
