@@ -12,20 +12,8 @@
             font-size: 30px;
         }
 
-        .center {
-            width: 50%;
-            margin: auto;
-            padding: 10px;
-        }
-
-        .form75{
-            width: 75%;
-            margin: auto;
-            padding: 10px;
-        }
-
-        h3, p{
-            text-align: center;
+        table {
+            width: 100%;
         }
     </style>
 </head>
@@ -34,22 +22,60 @@
     <div class="header">
         <h1><b>Event Management App</b></h1>
     </div>
-    <div class="center">
-        <h3 class="my-2">Delete Event Category</h3>
-        <p>Provide event ID & click delete</p>
-        <div class="form75">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="eventId" class="form-label">Event ID</label>
-                                <input type="text" name="eventId" class="form-control" id="eventId"
-                                    placeholder="Enter event ID" />
-                            </div>
-                            <button class="btn btn-primary">Delete</button>
-                        </form>
-                    </div>
+    <div class="album py-5">
+        <div class="container">
+            <div class="my-2">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Start</th>
+                                <th scope="col">End</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Is Active</th>
+                                <th scope="col">Capacity</th>
+                                <th scope="col">Tickets Available</th>
+                                <th scope="col">Categoy Id</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of records">
+                                <th scope="row">
+                                    {{item.eventId}}
+                                </th>
+                                <td>
+                                    {{item.name}}
+                                </td>
+                                <td>
+                                    {{item.date | date:'medium'}}
+                                </td>
+                                <td>
+                                    {{getEndDate(item.date, item.duration) | date:'medium'}}
+                                </td>
+                                <td>
+                                    {{getHours(item.duration)}}
+                                </td>
+                                <td>
+                                    {{item.isActive}}
+                                </td>
+                                <td>
+                                    {{item.capacity}}
+                                </td>
+                                <td>
+                                    {{item.availability}}
+                                </td>
+                                <td>
+                                    {{getCategories(item.categoryList)}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="deleteEvent(item.eventId)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
