@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from 'src/app/database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-event',
@@ -9,7 +10,7 @@ import { DatabaseService } from 'src/app/database.service';
 export class DeleteEventComponent {
   records: any[] = []
 
-  constructor(private dbService: DatabaseService) {
+  constructor(private dbService: DatabaseService, private router: Router) {
     this.getEvent();
   }
 
@@ -18,7 +19,7 @@ export class DeleteEventComponent {
       next: (data: any) => {
         this.records = data
       },
-      error: (err) =>  { }
+      error: (err) =>  { this.router.navigate(['/400']) }
     })
   }
 
@@ -29,7 +30,7 @@ export class DeleteEventComponent {
         this.getEvent();
       },
       error: (err) =>  {
-        console.log(err)
+        this.router.navigate(['/400'])
       }
     })
   }

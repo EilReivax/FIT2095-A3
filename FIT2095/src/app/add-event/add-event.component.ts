@@ -36,7 +36,7 @@ export class AddEventComponent {
     this.dbService.createEvent(eventObj).subscribe({
       next:(result) => {this.router.navigate(['/list-event']);},
       error: (error) => {
-        console.log(error);
+        this.router.navigate(['/400']);
       }
     })
   }
