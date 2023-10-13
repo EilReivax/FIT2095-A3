@@ -12,44 +12,44 @@
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <form action="/event/michael/add" method="POST">
+                                    <form>
                                         <div class="mb-3">
                                             <label for="name" class="form-label">* Event Name</label>
-                                            <input type="text" name="name" class="form-control" id="name" placeholder="Enter event name" required>
+                                            <input type="text" name="name" class="form-control" id="name" [(ngModel)]="name" placeholder="Enter event name" required> 
                                         </div>
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <input type="text" name="description" class="form-control" id="description" placeholder="Enter description">
+                                            <input type="text" name="description" class="form-control" id="description" [(ngModel)]="description" placeholder="Enter description">
                                         </div>
                                         <div class="mb-3">
                                             <label for="image" class="form-label">Image</label>
-                                            <input type="text" name="image" class="form-control" id="image" placeholder="Enter static resource path">
+                                            <input type="text" name="image" class="form-control" id="image" [(ngModel)]="image" placeholder="Enter static resource path">
                                         </div>
                                         <div class="mb-3">
                                             <label for="date" class="form-label">* Start Date Time</label>
-                                            <input type="datetime-local" name="date" class="form-control" id="date" required>
+                                            <input type="datetime-local" name="date" class="form-control" id="date" [(ngModel)]="date" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="duration" class="form-label">* Duration In Minutes</label>
-                                            <input type="number" name="duration" class="form-control" id="duration" placeholder="Event duration in minutes" required>
+                                            <input type="number" name="duration" class="form-control" id="duration" [(ngModel)]="duration" placeholder="Event duration in minutes" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="isActive" class="form-check-label">Is Active</label>
-                                            <input type="checkbox" name="isActive" class="form-check-input" id="isActive">
+                                            <input type="checkbox" name="isActive" class="form-check-input" id="isActive" [(ngModel)]="isActive">
                                         </div>
                                         <div class="mb-3">
                                             <label for="capacity" class="form-label">Capacity</label>
-                                            <input type="number" name="capacity" class="form-control" id="capacity" placeholder="Event capacity">
+                                            <input type="number" name="capacity" class="form-control" id="capacity" [(ngModel)]="capacity" placeholder="Event capacity">
                                         </div>
                                         <div class="mb-3">
                                             <label for="availability" class="form-label">Tickets Available</label>
-                                            <input type="number" name="availability" class="form-control" id="availability" placeholder="Tickets Available">
+                                            <input type="number" name="availability" class="form-control" id="availability" [(ngModel)]="availability" placeholder="Tickets Available">
                                         </div>
                                         <div class="mb-3">
                                             <label for="categoriesId" class="form-label">* Categories ID</label>
-                                            <input type="text" name="categoriesId" class="form-control" id="categoriesId" placeholder="Categories ID" required>
+                                            <input type="text" name="categoriesId" class="form-control" id="categoriesId" [(ngModel)]="categoriesId" placeholder="Categories ID" required>
                                         </div>
-                                        <button class="btn btn-primary">Submit</button>
+                                        <button class="btn btn-primary" (click)="saveEvent()">Submit</button>
                                     </form>
                                 </div>
                             </div>
