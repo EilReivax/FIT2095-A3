@@ -74,7 +74,7 @@
                                         {{getCategories(event.categoryList)}}
                                     </td>
                                     <td>
-                                        <a><button class="btn btn-primary">View</button></a>
+                                        <a [routerLink]="['/view-event', event.eventId]"><button class="btn btn-primary">View</button></a>
                                     </td>
                                 </tr>
                             </tbody>
