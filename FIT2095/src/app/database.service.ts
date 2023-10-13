@@ -29,7 +29,8 @@ export class DatabaseService {
   }
 
   viewCategory(id: any){
-    return this.http.get("/api/v1/category/32528558/view", {headers: httpOptions.headers});
+    let url = "/api/v1/category/32528558/view/" + id
+    return this.http.get(url, {headers: httpOptions.headers});
   }
 
   listEvent(){
