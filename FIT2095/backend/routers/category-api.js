@@ -44,26 +44,25 @@ module.exports = {
         res.json({ status: status });
     },
     deleteOne: async function (req, res) {
+        let deletedCount = 0;
         let category = await Category.findOne({ categoryId: req.body.categoryId });
 
-        let updateStatus = await Event.updateMany(
-            { categoryList: { $in: [category._id] } },
-            { $pull: { categoryList: category._id } }
+        let eventDeleteStatus = await Event.deleteMany(
+            { _id: { $in: category.eventList } }
         );
 
-        let deleteStatus = await Category.deleteOne({ categoryId: req.body.categoryId });
+        let categoryDeleteStatus = await Category.deleteOne(
+            { categoryId: req.body.categoryId }
+        );
+
+        deletedCount = eventDeleteStatus.deletedCount + categoryDeleteStatus.deletedCount
 
         await Operation.updateOne(
             { _id: OPERATION_ID },
-            {
-                $inc: {
-                    updateCount: updateStatus.modifiedCount,
-                    deleteCount: deleteStatus.deletedCount
-                }
-            }
+            { $inc: { deleteCount: deletedCount } }
         );
 
-        res.json(deleteStatus);
+        res.json(deletedCount);
     },
     getOne: async function (req, res) {
         let category = await Category.findOne({ categoryId: req.params.categoryId })
