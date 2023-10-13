@@ -64,5 +64,16 @@ module.exports = {
         );
 
         res.json(deleteStatus);
+    },
+    getOne: async function (req, res) {
+        let category = await Category.findOne({ categoryId: req.params.categoryId })
+            .populate('eventList')
+            .exec();
+        
+        let events = await Event.find({ categoryList: category._id })
+            .populate('categoryList')
+            .exec();
+        
+        res.json({ category: category, events: events });
     }
 }

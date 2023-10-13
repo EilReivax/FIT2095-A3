@@ -33,6 +33,7 @@ app.post('/api/v1/category/32528558/add', CategoryApi.createOne);
 app.get('/api/v1/category/32528558/view-all', CategoryApi.getAll);
 app.put('/api/v1/category/32528558/edit', CategoryApi.updateOne);
 app.delete('/api/v1/category/32528558/delete', CategoryApi.deleteOne);
+app.get('/api/v1/category/32528558/view/:categoryId', CategoryApi.getOne);
 
 // Event API endpoints
 app.post('/api/v1/event/michael/add', EventApi.createOne);

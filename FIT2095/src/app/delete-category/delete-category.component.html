@@ -12,20 +12,8 @@
             font-size: 30px;
         }
 
-        .center {
-            width: 50%;
-            margin: auto;
-            padding: 10px;
-        }
-
-        .form75{
-            width: 75%;
-            margin: auto;
-            padding: 10px;
-        }
-
-        h3, p{
-            text-align: center;
+        table {
+            width: 100%;
         }
     </style>
 </head>
@@ -34,22 +22,46 @@
     <div class="header">
         <h1><b>Event Management App</b></h1>
     </div>
-    <div class="center">
-        <h3 class="my-2">Delete Event Category</h3>
-        <p>Provide category ID & click delete</p>
-        <div class="form75">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <form action="/delete-event-category" method="POST">
-                            <div class="mb-3">
-                                <label for="categoryId" class="form-label">Category ID</label>
-                                <input type="text" name="categoryId" class="form-control" id="categoryId"
-                                    placeholder="Enter category ID" />
-                            </div>
-                            <button class="btn btn-primary">Delete</button>
-                        </form>
-                    </div>
+    <div class="album py-5">
+        <div class="container">
+            <div class="my-2">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Image</th>
+                                <th scope="col"></th>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of records">
+                                <th scope="row">
+                                    {{item.categoryId}}
+                                </th>
+                                <td>
+                                    {{item.name | uppercase}}
+                                </td>
+                                <td>
+                                    {{item.description}}
+                                </td>
+                                <td>
+                                    {{item.image}}
+                                </td>
+                                <td></td>
+                                <td>
+                                    {{item.date | date: 'medium'}}
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="deleteCategory(item.categoryId)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
