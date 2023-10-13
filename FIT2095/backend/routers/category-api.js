@@ -9,8 +9,13 @@ let OPERATION_ID = 'OPERATION_ID';
 module.exports = {
     createOne: async function (req, res) {
         let categoryDetails = req.body;
-        let newCategory = new Category(categoryDetails);
-        await newCategory.save();
+        try{
+            let newCategory = new Category(categoryDetails);
+            await newCategory.save();
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
 
         await Operation.updateOne(
             { _id: OPERATION_ID },
@@ -26,13 +31,18 @@ module.exports = {
         res.json(categories);
     },
     updateOne: async function (req, res) {
-        let updateStatus = await Category.updateOne(
-            { categoryId: req.body.categoryId },
-            {
-                name: req.body.name,
-                description: req.body.description
-            }
-        );
+        try{
+            let updateStatus = await Category.updateOne(
+                { categoryId: req.body.categoryId },
+                {
+                    name: req.body.name,
+                    description: req.body.description
+                }
+            );
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
 
         await Operation.updateOne(
             { _id: OPERATION_ID },
@@ -45,17 +55,22 @@ module.exports = {
     },
     deleteOne: async function (req, res) {
         let deletedCount = 0;
-        let category = await Category.findOne({ categoryId: req.body.categoryId });
+        try{
+            let category = await Category.findOne({ categoryId: req.body.categoryId });
 
-        let eventDeleteStatus = await Event.deleteMany(
-            { _id: { $in: category.eventList } }
-        );
+            let eventDeleteStatus = await Event.deleteMany(
+                { _id: { $in: category.eventList } }
+            );
 
-        let categoryDeleteStatus = await Category.deleteOne(
-            { categoryId: req.body.categoryId }
-        );
+            let categoryDeleteStatus = await Category.deleteOne(
+                { categoryId: req.body.categoryId }
+            );
 
-        deletedCount = eventDeleteStatus.deletedCount + categoryDeleteStatus.deletedCount
+            deletedCount = eventDeleteStatus.deletedCount + categoryDeleteStatus.deletedCount
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
 
         await Operation.updateOne(
             { _id: OPERATION_ID },
@@ -65,13 +80,18 @@ module.exports = {
         res.json(deletedCount);
     },
     getOne: async function (req, res) {
-        let category = await Category.findOne({ categoryId: req.params.categoryId })
-            .populate('eventList')
-            .exec();
-        
-        let events = await Event.find({ categoryList: category._id })
-            .populate('categoryList')
-            .exec();
+        try{
+            let category = await Category.findOne({ categoryId: req.params.categoryId })
+                .populate('eventList')
+                .exec();
+            
+            let events = await Event.find({ categoryList: category._id })
+                .populate('categoryList')
+                .exec();
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
         
         res.json({ category: category, events: events });
     }
