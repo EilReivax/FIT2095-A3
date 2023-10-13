@@ -9,8 +9,8 @@ let OPERATION_ID = 'OPERATION_ID';
 module.exports = {
     createOne: async function (req, res) {
         let categoryDetails = req.body;
+        let newCategory = new Category(categoryDetails);
         try{
-            let newCategory = new Category(categoryDetails);
             await newCategory.save();
         } catch (err) {
             res.status(400).json({ error: err });
