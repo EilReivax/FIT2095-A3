@@ -109,5 +109,13 @@ module.exports = {
         );
 
         res.json(deleteStatus);
+    },
+
+    getOne: async function (req, res) {
+        let event = await Event.findOne({ eventId: req.params.eventId })
+            .populate('categoryList')
+            .exec();
+        
+        res.json(event);
     }
 }

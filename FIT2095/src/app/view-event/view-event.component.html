@@ -12,41 +12,44 @@
     <div>
         <h3>Event ID</h3>
         <p>
-            <%= event.eventId %>
+            {{event.eventId}}
         </p>
         <h3>Name</h3>
         <p>
-            <%= event.name %>
+            {{event.name}}
         </p>
         <h3>Description</h3>
         <p>
-            <%= event.description %>
+            {{event.description}}
         </p>
         <h3>Start Date Time</h3>
         <p>
-            <%= event.startDate %>
+            {{event.startDate}}
         </p>
         <h3>End Date Time</h3>
         <p>
-            <%= event.end() %>
+            {{getEndDate(event.date, event.duration) | date:'medium'}}
         </p>
         <h3>Duration</h3>
         <p>
-            <%= event.duration %>
+            {{getHours(event.duration)}}
         </p>
         <h3>Is Active</h3>
         <p>
-            <%= event.isActive %>
+            {{event.isActive}}
         </p>
         <h3>Capacity</h3>
         <p>
-            <%= event.capacity %>
+            {{event.capacity}}
         </p>
         <h3>Tickets Available</h3>
         <p>
-            <%= event.availability %>
+            {{event.availability}}
         </p>
         <h3>Categories ID</h3>
+        <p>
+            {{getCategories(event.categoryList)}}
+        </p>
     </div>
 </body>
 
