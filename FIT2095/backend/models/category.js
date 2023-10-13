@@ -7,7 +7,8 @@ const categorySchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        match: /^[A-Za-z0-9\s]+$/
     },
     description: String,
     image: {
