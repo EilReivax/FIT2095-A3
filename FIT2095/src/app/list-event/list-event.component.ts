@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from 'src/app/database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-event',
@@ -9,7 +10,7 @@ import { DatabaseService } from 'src/app/database.service';
 export class ListEventComponent {
   records: any[] = []
 
-  constructor(private dbService: DatabaseService) {
+  constructor(private dbService: DatabaseService, private router: Router) {
     this.getEvent();
   }
 
@@ -19,7 +20,7 @@ export class ListEventComponent {
         this.records = data
       },
       error: (err) =>  {
-        console.log(err);
+        this.router.navigate(['/400']);
       }
     })
   }

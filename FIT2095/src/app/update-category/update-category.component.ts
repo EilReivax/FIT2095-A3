@@ -24,7 +24,7 @@ export class UpdateCategoryComponent {
     this.dbService.updateCategory(categoryObj).subscribe({
       next:(result) => {this.router.navigate(['/list-category']);},
       error: (error) => {
-        console.log(error);
+        this.router.navigate(['/400']);
       }
     })
   }

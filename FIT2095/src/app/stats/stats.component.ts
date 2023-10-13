@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DatabaseService } from 'src/app/database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stats',
@@ -9,7 +10,7 @@ import { DatabaseService } from 'src/app/database.service';
 export class StatsComponent {
   stats: any = {};
 
-  constructor(private dbService: DatabaseService) {
+  constructor(private dbService: DatabaseService, private router: Router) {
     this.getStats();
   }
 
@@ -19,7 +20,7 @@ export class StatsComponent {
         this.stats = data;
       },
       error: (err) =>  {
-        console.log(err);
+        this.router.navigate(['/400']);
       }
     })
   }
