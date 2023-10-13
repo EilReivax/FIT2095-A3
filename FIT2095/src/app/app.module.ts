@@ -36,7 +36,6 @@ const appRoutes: Routes = [
   { path: "stats2", component: StatsRecordsComponent },
   { path: "", redirectTo: "/stats", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent },
-
 ];
 
 @NgModule({
