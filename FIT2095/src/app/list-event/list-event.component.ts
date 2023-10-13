@@ -22,8 +22,13 @@ export class ListEventComponent {
     })
   }
 
-  getEndDate(date: Date, hours: number) {
-    return new Date(date.getTime() + hours * 60000)
+  getEndDate(date: Date, duration: number) {
+    let newDate = new Date(date);
+    return new Date(newDate.getTime() + duration * 60000)
+  }
+
+  getHours(duration: number) {
+    return Math.round(duration / 6) / 10 + "Hour(s)"
   }
 
   getCategories(categoryList: any[]) {
