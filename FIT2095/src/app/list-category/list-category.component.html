@@ -44,7 +44,7 @@
                                     {{item.categoryId}}
                                 </th>
                                 <td>
-                                    {{item.name}}
+                                    {{item.name | uppercase}}
                                 </td>
                                 <td>
                                     {{item.description}}
@@ -54,7 +54,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    {{item.date.toLocaleDateString()}}
+                                    {{item.date | date: 'medium'}}
                                 </td>
                                 <td>
                                     <a><button class="btn btn-primary">View</button></a>
