@@ -18,7 +18,9 @@ export class ListEventComponent {
       next: (data: any) => {
         this.records = data
       },
-      error: (err) =>  { }
+      error: (err) =>  {
+        console.log(err);
+      }
     })
   }
 
@@ -28,7 +30,7 @@ export class ListEventComponent {
   }
 
   getHours(duration: number) {
-    return Math.round(duration / 6) / 10 + "Hour(s)"
+    return Math.round(duration / 6) / 10 + " Hour(s)"
   }
 
   getCategories(categoryList: any[]) {
