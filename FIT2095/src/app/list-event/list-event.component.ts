@@ -21,4 +21,20 @@ export class ListEventComponent {
       error: (err) =>  { }
     })
   }
+
+  getEndDate(date: Date, hours: number) {
+    return new Date(date.getTime() + hours * 60000)
+  }
+
+  getCategories(categoryList: any[]) {
+    let categories = "";
+    for (let i = 0; i < categoryList.length; i++) {
+      if (i == categoryList.length - 1) {
+        categories += categoryList[i].categoryId;
+      } else {
+        categories += categoryList[i].categoryId + ", ";
+      }
+    }
+    return categories;
+  }
 }

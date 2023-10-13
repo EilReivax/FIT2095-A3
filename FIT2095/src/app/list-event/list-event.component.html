@@ -50,13 +50,13 @@
                                     {{item.name}}
                                 </td>
                                 <td>
-                                    {{item.date.toLocaleDateString()}}
+                                    {{item.date | date:'medium'}}
                                 </td>
                                 <td>
-                                    {{item.end()}}
+                                    {{getEndDate(item.date, item.duration) | date:'medium'}}
                                 </td>
                                 <td>
-                                    {{Math.round(item.duration / 6) / 10}} Hour(s)
+                                    <!-- {{item.getHours()}} -->
                                 </td>
                                 <td>
                                     {{item.isActive}}
@@ -66,6 +66,9 @@
                                 </td>
                                 <td>
                                     {{item.availability}}
+                                </td>
+                                <td>
+                                    {{getCategories(item.categoryList)}}
                                 </td>
                                 <td>
                                     <a><button class="btn btn-primary">View</button></a>
