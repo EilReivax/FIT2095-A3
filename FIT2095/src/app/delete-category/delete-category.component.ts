@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from 'src/app/database.service';
 
 @Component({
   selector: 'app-delete-category',
@@ -6,5 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-category.component.css']
 })
 export class DeleteCategoryComponent {
+  records: any[] = []
 
+  constructor(private dbService: DatabaseService) {
+    this.getCategory();
+  }
+
+  getCategory(){
+    this.dbService.listCategory().subscribe({
+      next: (data: any) => {
+        this.records = data
+      },
+      error: (err) =>  { }
+    })
+  }
+
+  deleteCategory(id: any){
+    this.dbService.deleteCategory(id).subscribe({
+      next: (data: any) => {
+        this.records = data
+        this.getCategory();
+      },
+      error: (err) =>  { }
+    })
+  }
 }
