@@ -40,22 +40,27 @@ module.exports = {
             categoryList: categoryList
         });
 
-        await newEvent.save();
+        try{
+            await newEvent.save();
 
-        let updateStatus = await Category.updateMany(
-            { _id: { $in: categoryList } },
-            { $push: { eventList: newEvent._id } }
-        )
+            let updateStatus = await Category.updateMany(
+                { _id: { $in: categoryList } },
+                { $push: { eventList: newEvent._id } }
+            )
 
-        await Operation.updateOne(
-            { _id: OPERATION_ID },
-            {
-                $inc: {
-                    createCount: 1,
-                    updateCount: updateStatus.modifiedCount
+            await Operation.updateOne(
+                { _id: OPERATION_ID },
+                {
+                    $inc: {
+                        createCount: 1,
+                        updateCount: updateStatus.modifiedCount
+                    }
                 }
-            }
-        );
+            );
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
 
         res.json({ eventId: newEvent.eventId });
     },
@@ -71,13 +76,18 @@ module.exports = {
         let name = req.body.name;
         let capacity = req.body.capacity;
 
-        let updateStatus = await Event.updateOne(
-            { eventId: eventId },
-            {
-                name: name,
-                capacity: capacity
-            }
-        );
+        try{
+            let updateStatus = await Event.updateOne(
+                { eventId: eventId },
+                {
+                    name: name,
+                    capacity: capacity
+                }
+            );
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
 
         let status = `${updateStatus.matchedCount} found. ${updateStatus.modifiedCount} modified.`
 
@@ -91,10 +101,15 @@ module.exports = {
     deleteOne: async function (req, res) {
         let event = await Event.findOne({ eventId: req.body.eventId });
 
-        let updateStatus = await Category.updateMany(
-            { eventList: { $in: [event._id] } },
-            { $pull: { eventList: event._id } }
-        );
+        try{
+            let updateStatus = await Category.updateMany(
+                { eventList: { $in: [event._id] } },
+                { $pull: { eventList: event._id } }
+            );
+        } catch (err) {
+            res.status(400).json({ error: err });
+            return;
+        }
 
         let deleteStatus = await Event.deleteOne({ _id: event._id });
 
