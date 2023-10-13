@@ -30,7 +30,7 @@ export class ListEventComponent {
   }
 
   getHours(duration: number) {
-    return Math.round(duration / 6) / 10 + "Hour(s)"
+    return Math.round(duration / 6) / 10 + " Hour(s)"
   }
 
   getCategories(categoryList: any[]) {
