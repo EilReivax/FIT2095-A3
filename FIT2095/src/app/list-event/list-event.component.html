@@ -42,6 +42,35 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr *ngFor="let item of records">
+                                <th scope="row">
+                                    {{item.eventId}}
+                                </th>
+                                <td>
+                                    {{item.name}}
+                                </td>
+                                <td>
+                                    {{item.date.toLocaleDateString()}}
+                                </td>
+                                <td>
+                                    {{item.end()}}
+                                </td>
+                                <td>
+                                    {{Math.round(item.duration / 6) / 10}} Hour(s)
+                                </td>
+                                <td>
+                                    {{item.isActive}}
+                                </td>
+                                <td>
+                                    {{item.capacity}}
+                                </td>
+                                <td>
+                                    {{item.availability}}
+                                </td>
+                                <td>
+                                    <a><button class="btn btn-primary">View</button></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
