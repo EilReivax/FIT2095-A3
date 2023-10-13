@@ -48,11 +48,6 @@ const eventSchema = new mongoose.Schema({
     }],
 });
 
-eventSchema.methods.end = function () {
-    let endDate = new Date(this.date.getTime() + this.duration * 60000);
-    return endDate.toLocaleString();
-}
-
 function getRandomLetter(){
     alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     randInt = getRandomNum(26);
