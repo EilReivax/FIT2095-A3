@@ -16,7 +16,7 @@ export class AddEventComponent {
   isActive: boolean = false;
   capacity: number = 0;
   availability: number = 0;
-  categoryId: string = '';
+  categoriesId: string = '';
 
   constructor(public dbService: DatabaseService, private router:Router) { }
 
@@ -30,7 +30,7 @@ export class AddEventComponent {
       isActive: this.isActive,
       capacity: this.capacity,
       availability: this.availability,
-      categoryId: this.categoryId
+      categoriesId: this.categoriesId
     }
 
     this.dbService.createEvent(categoryObj).subscribe({
