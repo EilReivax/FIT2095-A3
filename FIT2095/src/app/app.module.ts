@@ -18,6 +18,8 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { StatsComponent } from './stats/stats.component';
+import { InvalidDataComponent } from './invalid-data/invalid-data.component';
+import { StatsRecordsComponent } from './stats-records/stats-records.component';
 
 const appRoutes: Routes = [
   { path: "stats", component: StatsComponent },
@@ -44,7 +46,9 @@ const appRoutes: Routes = [
     UpdateEventComponent,
     ViewCategoryComponent,
     ViewEventComponent,
-    StatsComponent
+    StatsComponent,
+    InvalidDataComponent,
+    StatsRecordsComponent
   ],
   imports: [
     BrowserModule,
