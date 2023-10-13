@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const path = require("path");
 
 const CategoryApi = require('./backend/routers/category-api');
-const Category = require('./backend/routers/category');
 const EventApi = require('./backend/routers/event-api');
-const Event = require('./backend/routers/event');
 const Stats = require('./backend/controllers/stats');
 
 const PORT_NUMBER = 8080;
