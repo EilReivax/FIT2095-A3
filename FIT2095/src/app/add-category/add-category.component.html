@@ -43,23 +43,23 @@
                 <div class="col">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <form action="/add-category-post" method="POST">
+                            <form>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">* Category Name</label>
-                                    <input type="text" name="name" class="form-control" id="name"
+                                    <input type="text" name="name" class="form-control" id="name" [(ngModel)]="name"
                                         placeholder="Enter category name" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description of Category</label>
-                                    <input type="text" name="description" class="form-control" id="description"
+                                    <input type="text" name="description" class="form-control" id="description" [(ngModel)]="description"
                                         placeholder="Enter category description">
                                 </div>
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="text" name="image" class="form-control" id="image"
+                                    <input type="text" name="image" class="form-control" id="image" [(ngModel)]="image"
                                         placeholder="Enter category image">
                                 </div>
-                                <button class="btn btn-primary">Submit</button>
+                                <button class="btn btn-primary" (click)="saveCategory()">Submit</button>
                             </form>
                         </div>
                     </div>
