@@ -25,6 +25,8 @@ async function connect() {
     await mongoose.connect('mongodb://localhost:27017/assignment-3');
 }
 connect().catch(err => console.log(err));
+// Stats API endpoint
+app.get('/api/v1/stats', Stats.getAll);
 
 // Category API endpoints
 app.post('/api/v1/category/32528558/add', CategoryApi.createOne);

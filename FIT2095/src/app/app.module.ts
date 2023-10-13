@@ -22,7 +22,6 @@ import { InvalidDataComponent } from './invalid-data/invalid-data.component';
 import { StatsRecordsComponent } from './stats-records/stats-records.component';
 
 const appRoutes: Routes = [
-  { path: "stats", component: StatsComponent },
   { path: "add-category", component: AddCategoryComponent },
   { path: "add-event", component: AddEventComponent },
   { path: "list-category", component: ListCategoryComponent },
@@ -33,9 +32,10 @@ const appRoutes: Routes = [
   { path: "update-event", component: UpdateEventComponent},
   { path: "view-category", component: ViewCategoryComponent},
   { path: "view-event", component: ViewEventComponent},
-  { path: "", redirectTo: "/stats", pathMatch: "full" },
-  { path: "**", component: PageNotFoundComponent },
-
+  { path: "stats1", component: StatsComponent },
+  { path: "stats2", component: StatsRecordsComponent },
+  { path: "", redirectTo: "/stats1", pathMatch: "full" },
+  { path: "**", component: PageNotFoundComponent }
 ];
 
 @NgModule({
