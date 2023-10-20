@@ -88,7 +88,7 @@ module.exports = {
                 .populate('eventList')
                 .exec();
             
-            let events = await Event.find({ categoryList: category._id })
+            events = await Event.find({ categoryList: category._id })
                 .populate('categoryList')
                 .exec();
         } catch (err) {
