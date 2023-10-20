@@ -31,8 +31,9 @@ module.exports = {
         res.json(categories);
     },
     updateOne: async function (req, res) {
+        let updateStatus = {};
         try{
-            let updateStatus = await Category.updateOne(
+            updateStatus = await Category.updateOne(
                 { categoryId: req.body.categoryId },
                 {
                     name: req.body.name,
@@ -80,8 +81,10 @@ module.exports = {
         res.json(deletedCount);
     },
     getOne: async function (req, res) {
+        let category
+        let events
         try{
-            let category = await Category.findOne({ categoryId: req.params.categoryId })
+            category = await Category.findOne({ categoryId: req.params.categoryId })
                 .populate('eventList')
                 .exec();
             

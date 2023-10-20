@@ -75,9 +75,10 @@ module.exports = {
         let eventId = req.body.eventId;
         let name = req.body.name;
         let capacity = req.body.capacity;
+        let updateStatus
 
         try{
-            let updateStatus = await Event.updateOne(
+            updateStatus = await Event.updateOne(
                 { eventId: eventId },
                 {
                     name: name,
@@ -100,9 +101,10 @@ module.exports = {
     },
     deleteOne: async function (req, res) {
         let event = await Event.findOne({ eventId: req.body.eventId });
+        let updateStatus
 
         try{
-            let updateStatus = await Category.updateMany(
+            updateStatus = await Category.updateMany(
                 { eventList: { $in: [event._id] } },
                 { $pull: { eventList: event._id } }
             );
