@@ -22,9 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 async function connect() {
-    await mongoose.connect('mongodb://localhost:27017/assignment-3');
+    await mongoose.connect('mongodb://127.0.0.1:27017/assignment-3');
 }
-connect().catch(err => console.log(err));
+connect()
+.then(() => console.log('connected'))
+.catch(err => console.log(err));
+
 // Stats API endpoint
 app.get('/api/v1/stats', Stats.getAll);
 
